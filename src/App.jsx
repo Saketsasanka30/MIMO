@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getPrintJob } from './api/mock';
 import { FestiveSnowfall } from './components/FestiveDecorations';
+import FireworksCanvas from './components/FireworksCanvas';
 import { useIdleTimeout } from './hooks/useIdleTimeout';
 import CodeEntryScreen from './screens/CodeEntryScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -114,8 +115,14 @@ export default function App() {
         className="kiosk-bg-image"
       />
 
-      {/* Subtle readability vignette & gentle snowfall */}
+      {/* Subtle readability vignette, ambient snowfall & screen-triggered fireworks */}
       <div className="kiosk-bg-overlay" aria-hidden="true" />
+      {(screen === 'HOME' || screen === 'SUMMARY') && (
+        <FireworksCanvas
+          key={screen}
+          variant={screen === 'SUMMARY' ? 'celebrate' : 'ambient'}
+        />
+      )}
       <FestiveSnowfall />
 
       {/* Centered, uniformly scaled 1080x1920 kiosk stage */}

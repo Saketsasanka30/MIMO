@@ -50,8 +50,8 @@
   --radius-inner: 24px;
   --radius-key: 22px;
 
-  /* Touch Target Minimum */
-  --touch-min: 88px;
+  /* Touch Target Minimum (Kiosk Accessibility >= 96x96px) */
+  --touch-min: 96px;
 
   /* Transitions */
   --screen-transition-ms: 360ms;
@@ -95,6 +95,14 @@ button {
   border: none;
   background: none;
   padding: 0;
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+}
+
+[role='button'],
+[role='slider'] {
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
 }
 
 /* Fullscreen Uploaded New Year Fireworks Background Image */

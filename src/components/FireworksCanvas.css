@@ -1,0 +1,35 @@
+/* Subtle screen-blended CSS presentation for canvas-based fireworks */
+.fireworks-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: fireworks-canvas-in 600ms ease-out forwards;
+}
+
+.fireworks-canvas--ambient {
+  --fw-opacity: 0.72;
+}
+
+.fireworks-canvas--celebrate {
+  --fw-opacity: 0.88;
+}
+
+@keyframes fireworks-canvas-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: var(--fw-opacity, 0.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fireworks-canvas {
+    display: none;
+  }
+}
