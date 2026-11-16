@@ -1,0 +1,121 @@
+.printing-screen {
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.printing-stack {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 36px;
+}
+
+.printing-info-card {
+  width: 100%;
+  padding: 68px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 18px;
+}
+
+.printing-greeting {
+  font-size: 96px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.printing-greeting__name {
+  color: var(--accent-gold);
+}
+
+.printing-subline {
+  margin: 0;
+  font-size: 44px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.printing-stage-text {
+  margin: 20px 0 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.printing-dial-card {
+  width: 100%;
+  flex: 1;
+  padding: 64px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+/* Read-only CometDial container: disables all pointer/touch/drag interaction */
+.printing-dial-readonly {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  touch-action: none;
+}
+
+.printing-dial-readonly .comet-dial__value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 168px;
+}
+
+.printing-dial-readonly .comet-dial__unit {
+  font-size: 0.45em;
+  opacity: 0.78;
+}
+
+.printing-dial-stage {
+  position: absolute;
+  bottom: 136px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 390px;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.printing-page-meta {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent-silver);
+}
+
+.printing-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 8px;
+  flex-shrink: 0;
+}
+
+.printing-notice {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-muted);
+}

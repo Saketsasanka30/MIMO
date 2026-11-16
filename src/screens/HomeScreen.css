@@ -1,0 +1,140 @@
+.home-screen {
+  justify-content: space-between;
+  gap: 28px;
+}
+
+.home-top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Focused Hero Card: Wide Screen-Filling Rectangle with Clean Edge Gaps */
+.home-hero-card {
+  width: clamp(1024px, calc(92vw / var(--kiosk-scale, 1)), 3200px);
+  max-width: none;
+  flex: 1;
+  padding: 72px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 32px;
+}
+
+.home-hero-flourish {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 340px;
+  margin-bottom: 4px;
+}
+
+.home-hero-flourish__wing {
+  flex: 1;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(255, 209, 102, 0.65), transparent);
+}
+
+.home-hero-flourish__star {
+  font-size: 28px;
+  color: var(--accent-frost);
+  filter: drop-shadow(0 0 12px rgba(147, 197, 253, 0.7));
+}
+
+.home-eyebrow {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  color: var(--accent-silver);
+  opacity: 0.9;
+}
+
+.home-wordmark-wrap {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.home-wordmark {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 276px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  background: linear-gradient(180deg, #fff6d6 0%, #ffd166 48%, #d99b26 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 22px 50px rgba(245, 158, 11, 0.34));
+}
+
+.home-wordmark-ver {
+  font-size: 84px;
+  font-weight: 800;
+  margin-left: 14px;
+  vertical-align: super;
+  background: linear-gradient(180deg, #fff6d6 0%, #ffd166 60%, #d99b26 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home-title {
+  font-size: 72px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 8px;
+}
+
+.home-subtitle {
+  margin: 0 0 32px;
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  max-width: 860px;
+  text-wrap: balance;
+}
+
+/* Enlarged Kiosk SlideCommit Wrapper */
+.home-slide-wrap {
+  padding: 14px;
+  border-radius: 98px;
+  background: rgba(255, 255, 255, 0.09);
+  border: 2px solid rgba(255, 209, 102, 0.46);
+  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.54);
+}
+
+.home-slide-wrap .slide-commit__label,
+.home-slide-wrap .slide-commit__done {
+  font-family: var(--font-display);
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.home-slide-wrap .slide-commit__text--plain {
+  color: rgba(255, 209, 102, 0.88);
+}
+
+.home-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.home-footer-note {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-align: center;
+}

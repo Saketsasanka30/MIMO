@@ -1,0 +1,258 @@
+/* ==========================================================================
+   MIMO Kiosk Global Theme & New Year Winter Design Tokens (1080x1920)
+   ========================================================================== */
+
+:root {
+  /* Standard Modern Typography */
+  --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  /* Core Night & Translucent Obsidian Glass Palette */
+  --bg-base: #070604;
+  --bg-overlay: rgba(6, 5, 4, 0.16);
+  --text-primary: #f8fafc;
+  --text-secondary: rgba(252, 248, 240, 0.9);
+  --text-muted: rgba(235, 226, 208, 0.72);
+
+  /* Festive New Year & Holiday Accents */
+  --accent-gold: #ffd166;
+  --accent-gold-rich: #f59e0b;
+  --accent-gold-soft: rgba(255, 209, 102, 0.18);
+  --accent-silver: #f1ede4;
+  --accent-crimson: #e11d48;
+  --accent-pine: #10b981;
+  --accent-frost: #93c5fd;
+
+  /* Semantic Colors */
+  --color-success: #22c55e;
+  --color-success-soft: rgba(34, 197, 94, 0.18);
+  --color-danger: #ff3b30;
+  --color-danger-soft: rgba(255, 59, 48, 0.2);
+
+  /* Airy Translucent Glass Surfaces so Fireworks Shine Through */
+  --glass-bg: rgba(12, 10, 8, 0.32);
+  --glass-bg-elevated: rgba(18, 15, 11, 0.48);
+  --glass-border: rgba(255, 224, 148, 0.28);
+  --glass-border-gold: rgba(255, 209, 102, 0.45);
+  --glass-blur: 10px;
+
+  /* 8px Spatial Grid */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+
+  /* Radii */
+  --radius-card: 32px;
+  --radius-inner: 24px;
+  --radius-key: 22px;
+
+  /* Touch Target Minimum */
+  --touch-min: 88px;
+
+  /* Transitions */
+  --screen-transition-ms: 360ms;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 30px;
+  line-height: 1.4;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: manipulation;
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+  font-family: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+/* Fullscreen Uploaded New Year Fireworks Background Image */
+.kiosk-bg-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  pointer-events: none;
+}
+
+/* Subtle Readability Vignette keeping Fireworks Vibrant */
+.kiosk-bg-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(circle at 50% 45%, rgba(8, 7, 5, 0.08) 0%, var(--bg-overlay) 100%);
+  pointer-events: none;
+}
+
+/* Viewport Centering Container */
+.kiosk-viewport {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Fixed 1080x1920 Stage Scaled via CSS Transform */
+.kiosk-stage {
+  position: relative;
+  width: 1080px;
+  height: 1920px;
+  flex-shrink: 0;
+  transform-origin: center center;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Screen Transition Wrapper */
+.kiosk-screen-host {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  animation: kiosk-screen-in var(--screen-transition-ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes kiosk-screen-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Standard Glassmorphism Card with Subtle Golden Rim */
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+/* Shared Display Typography */
+.kiosk-heading {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+  margin: 0;
+}
+
+.kiosk-subtext {
+  font-family: var(--font-sans);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+  margin: 0;
+  text-align: center;
+}
+
+/* Primary Festive Touch Button */
+.kiosk-btn {
+  min-width: var(--touch-min);
+  min-height: var(--touch-min);
+  padding: 28px 56px;
+  border-radius: 26px;
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition:
+    transform 120ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.kiosk-btn--primary {
+  background: linear-gradient(135deg, #ffe082 0%, #f59e0b 100%);
+  color: #16120c;
+  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  box-shadow:
+    0 18px 40px rgba(245, 158, 11, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.kiosk-btn--primary:active:not(:disabled) {
+  transform: scale(0.97);
+  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.24);
+}
+
+.kiosk-btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border: 1.5px solid var(--glass-border);
+}
+
+.kiosk-btn--ghost:active:not(:disabled) {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.kiosk-btn:focus-visible {
+  outline: 4px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .kiosk-screen-host {
+    animation: none;
+  }
+}
