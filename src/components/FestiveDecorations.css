@@ -11,15 +11,15 @@
   position: absolute;
   top: -40px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.96) 0%, rgba(226, 232, 240, 0.25) 75%, transparent 100%);
+  background: radial-gradient(circle, rgba(148, 163, 184, 0.55) 0%, rgba(148, 163, 184, 0.16) 75%, transparent 100%);
   animation: snow-fall 12s linear infinite;
 }
 
 .snow-particle--crystal {
   border-radius: 0;
   background: none;
-  color: rgba(240, 249, 255, 0.85);
-  filter: drop-shadow(0 0 8px rgba(147, 197, 253, 0.45));
+  color: rgba(100, 116, 139, 0.48);
+  filter: none;
   animation: snow-fall-spin 14s linear infinite;
 }
 
@@ -55,13 +55,13 @@
 }
 
 .twinkle-star--gold {
-  color: var(--accent-gold);
-  filter: drop-shadow(0 0 10px rgba(255, 209, 102, 0.7));
+  color: #d97706;
+  filter: none;
 }
 
 .twinkle-star--frost {
-  color: #e0f2fe;
-  filter: drop-shadow(0 0 10px rgba(147, 197, 253, 0.65));
+  color: #2563eb;
+  filter: none;
 }
 
 @keyframes star-twinkle {
@@ -71,8 +71,8 @@
     transform: scale(0.75);
   }
   50% {
-    opacity: 0.92;
-    transform: scale(1.15);
+    opacity: 0.72;
+    transform: scale(1.1);
   }
 }
 
@@ -101,19 +101,19 @@
 }
 
 .festive-burst__piece--gold {
-  background: var(--accent-gold);
+  background: #f59e0b;
 }
 .festive-burst__piece--crimson {
-  background: #fb7185;
+  background: #e11d48;
 }
 .festive-burst__piece--pine {
-  background: #34d399;
+  background: #10b981;
 }
 .festive-burst__piece--silver {
-  background: #f1f5f9;
+  background: #64748b;
 }
 .festive-burst__piece--frost {
-  background: #93c5fd;
+  background: #3b82f6;
 }
 
 @keyframes festive-confetti-burst {

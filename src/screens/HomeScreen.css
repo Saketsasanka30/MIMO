@@ -2,7 +2,7 @@
   justify-content: center;
 }
 
-/* Centered Hero Card with sheer background so Happy New Year message shows crisply */
+/* Centered Hero Card in Crisp Frosted Light Mode */
 .home-hero-card {
   width: min(var(--kiosk-col-width), 920px);
   max-width: 100%;
@@ -16,13 +16,11 @@
   justify-content: center;
   text-align: center;
   gap: 24px;
-  background: rgba(6, 10, 22, 0.12);
+  background: rgba(255, 255, 255, 0.04);
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
-  border-color: rgba(255, 224, 148, 0.22);
-  box-shadow:
-    0 18px 46px rgba(0, 0, 0, 0.26),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  border-color: rgba(217, 119, 6, 0.22);
+  box-shadow: none;
 }
 
 .kiosk-stage[data-orientation='landscape'] .home-hero-card {
@@ -49,13 +47,13 @@
 .home-hero-flourish__wing {
   flex: 1;
   height: 1.5px;
-  background: linear-gradient(90deg, transparent, rgba(255, 209, 102, 0.72), transparent);
+  background: linear-gradient(90deg, transparent, rgba(217, 119, 6, 0.55), transparent);
 }
 
 .home-hero-flourish__star {
   font-size: 28px;
-  color: var(--accent-frost);
-  filter: drop-shadow(0 0 12px rgba(147, 197, 253, 0.7));
+  color: var(--accent-gold);
+  filter: none;
 }
 
 .home-eyebrow {
@@ -64,8 +62,8 @@
   font-size: 34px;
   font-weight: 700;
   letter-spacing: 0.28em;
-  color: var(--accent-silver);
-  opacity: 0.9;
+  color: #1e293b;
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.9);
 }
 
 .kiosk-stage[data-orientation='landscape'] .home-eyebrow {
@@ -92,11 +90,11 @@
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: 0.02em;
-  background: linear-gradient(180deg, #fff6d6 0%, #ffd166 48%, #d99b26 100%);
+  background: linear-gradient(180deg, #f59e0b 0%, #d97706 52%, #92400e 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 22px 50px rgba(245, 158, 11, 0.34));
+  filter: drop-shadow(0 12px 28px rgba(217, 119, 6, 0.2));
 }
 
 .kiosk-stage[data-orientation='landscape'] .home-wordmark {
@@ -107,6 +105,7 @@
   font-size: 64px;
   font-weight: 700;
   color: var(--text-primary);
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.92);
   margin-top: 6px;
 }
 
@@ -118,8 +117,9 @@
 .home-subtitle {
   margin: 0 0 24px;
   font-size: 36px;
-  font-weight: 500;
-  color: var(--text-secondary);
+  font-weight: 600;
+  color: #1e293b;
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.92);
   max-width: 780px;
   text-wrap: balance;
 }
@@ -133,9 +133,9 @@
 .home-slide-wrap {
   padding: 14px;
   border-radius: 94px;
-  background: rgba(255, 255, 255, 0.09);
-  border: 2px solid rgba(255, 209, 102, 0.46);
-  box-shadow: 0 28px 68px rgba(0, 0, 0, 0.54);
+  background: rgba(255, 255, 255, 0.14);
+  border: 2px solid rgba(217, 119, 6, 0.34);
+  box-shadow: none;
   margin: 0 auto;
   max-width: 100%;
 }
@@ -159,5 +159,5 @@
 }
 
 .home-slide-wrap .slide-commit__text--plain {
-  color: rgba(255, 209, 102, 0.88);
+  color: #334155;
 }

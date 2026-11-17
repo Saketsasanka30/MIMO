@@ -29,10 +29,10 @@ export default function HomeScreen({ onStart, isLandscape = false }) {
             onConfirm={() => Promise.resolve()}
             onDone={onStart}
             onError={reason => console.log(reason)}
-            trackColor="#141b2d"
-            handleColor="#ffd166"
-            successColor="#22c55e"
-            dangerColor="#e5484d"
+            trackColor="rgba(226, 232, 240, 0.58)"
+            handleColor="#f59e0b"
+            successColor="#16a34a"
+            dangerColor="#dc2626"
             width={isLandscape ? 580 : 720}
             height={isLandscape ? 120 : 156}
             radius={isLandscape ? 60 : 78}

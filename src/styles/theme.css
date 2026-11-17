@@ -3,38 +3,42 @@
    ========================================================================== */
 
 :root {
+  color-scheme: light;
+
   /* Standard Modern Typography */
   --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
 
-  /* Core Night & Translucent Obsidian Glass Palette */
-  --bg-base: #070604;
-  --bg-overlay: rgba(6, 5, 4, 0.16);
-  --text-primary: #f8fafc;
-  --text-secondary: rgba(252, 248, 240, 0.9);
-  --text-muted: rgba(235, 226, 208, 0.72);
+  /* Core Daylight Alabaster & Frosted Light Surface Palette */
+  --bg-base: #f4f6fa;
+  --bg-overlay: rgba(248, 250, 252, 0.65);
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
 
-  /* Festive New Year & Holiday Accents */
-  --accent-gold: #ffd166;
-  --accent-gold-rich: #f59e0b;
-  --accent-gold-soft: rgba(255, 209, 102, 0.18);
-  --accent-silver: #f1ede4;
-  --accent-crimson: #e11d48;
-  --accent-pine: #10b981;
-  --accent-frost: #93c5fd;
+  /* Festive New Year & Holiday Accents Tuned for Light Surfaces */
+  --accent-gold: #d97706;
+  --accent-gold-strong: #b45309;
+  --accent-gold-bright: #f59e0b;
+  --accent-gold-rich: #d97706;
+  --accent-gold-soft: rgba(245, 158, 11, 0.14);
+  --accent-silver: #334155;
+  --accent-crimson: #dc2626;
+  --accent-pine: #059669;
+  --accent-frost: #2563eb;
 
   /* Semantic Colors */
-  --color-success: #22c55e;
-  --color-success-soft: rgba(34, 197, 94, 0.18);
-  --color-danger: #ff3b30;
-  --color-danger-soft: rgba(255, 59, 48, 0.2);
+  --color-success: #16a34a;
+  --color-success-soft: rgba(22, 163, 74, 0.12);
+  --color-danger: #dc2626;
+  --color-danger-soft: rgba(220, 38, 38, 0.12);
 
-  /* Airy Translucent Glass Surfaces so Fireworks Shine Through */
-  --glass-bg: rgba(12, 10, 8, 0.32);
-  --glass-bg-elevated: rgba(18, 15, 11, 0.48);
-  --glass-border: rgba(255, 224, 148, 0.28);
-  --glass-border-gold: rgba(255, 209, 102, 0.45);
-  --glass-blur: 10px;
+  /* Crisp Frosted Light Glass Surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.96);
+  --glass-border: rgba(15, 23, 42, 0.1);
+  --glass-border-gold: rgba(217, 119, 6, 0.34);
+  --glass-blur: 18px;
 
   /* 8px Spatial Grid */
   --space-1: 8px;
@@ -118,7 +122,7 @@ button {
   min-height: var(--touch-min);
 }
 
-/* Fullscreen Crossfading Backgrounds (Happy New Year on Home, Christmas Tree elsewhere) */
+/* Soft Luminous Crossfading Artwork over Light Canvas */
 .kiosk-bg-base {
   position: fixed;
   inset: 0;
@@ -141,11 +145,19 @@ button {
   transform: scale(1);
 }
 
-.kiosk-bg-base--tree {
-  object-position: 82% center;
+.kiosk-bg-base--home {
+  object-position: center center;
 }
 
-/* Subtle Fireworks Background Layer on Home */
+.kiosk-bg-base--home.is-active {
+  opacity: 1;
+}
+
+.kiosk-bg-base--tree {
+  object-position: center center;
+}
+
+/* Subtle Light-Safe Sparkle Overlay on Home */
 .kiosk-bg-image {
   position: fixed;
   inset: 0;
@@ -162,7 +174,7 @@ button {
 }
 
 .kiosk-bg-image.is-active {
-  opacity: 0.22;
+  opacity: 0.14;
 }
 
 .kiosk-fw-layer {
@@ -172,13 +184,19 @@ button {
   pointer-events: none;
 }
 
-/* Balanced Vignette for Card Readability */
+/* Subtle overlay placeholder (kept clear so light backgrounds display crisply) */
 .kiosk-bg-overlay {
   position: fixed;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.14) 0%, rgba(4, 8, 16, 0.04) 100%);
+  background: transparent;
+  opacity: 0;
+  transition: opacity 680ms cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
+}
+
+.kiosk-bg-overlay.is-active {
+  opacity: 0;
 }
 
 /* Viewport Centering Container */
@@ -254,7 +272,7 @@ button {
   font-size: 30px;
 }
 
-/* Standard Glassmorphism Card with Subtle Golden Rim */
+/* Frosted Light Glassmorphism Card with Soft Daylight Elevation */
 .glass-card {
   position: relative;
   background: var(--glass-bg);
@@ -263,8 +281,9 @@ button {
   border: 1.5px solid var(--glass-border);
   border-radius: var(--radius-card);
   box-shadow:
-    0 28px 72px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    0 24px 60px rgba(15, 23, 42, 0.09),
+    0 4px 16px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.92);
 }
 
 /* Shared Display Typography */
@@ -274,7 +293,7 @@ button {
   letter-spacing: -0.02em;
   line-height: 1.1;
   text-wrap: balance;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.65);
+  text-shadow: none;
   margin: 0;
 }
 
@@ -283,7 +302,7 @@ button {
   font-size: 32px;
   font-weight: 500;
   color: var(--text-secondary);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
+  text-shadow: none;
   margin: 0;
   text-align: center;
 }
@@ -310,28 +329,28 @@ button {
 }
 
 .kiosk-btn--primary {
-  background: linear-gradient(135deg, #ffe082 0%, #f59e0b 100%);
-  color: #16120c;
-  border: 1.5px solid rgba(255, 255, 255, 0.55);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #18130a;
+  border: 1.5px solid rgba(217, 119, 6, 0.35);
   box-shadow:
-    0 18px 40px rgba(245, 158, 11, 0.32),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    0 14px 32px rgba(245, 158, 11, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .kiosk-btn--primary:active:not(:disabled) {
   transform: scale(0.97);
-  box-shadow: 0 8px 20px rgba(245, 158, 11, 0.24);
+  box-shadow: 0 8px 18px rgba(245, 158, 11, 0.2);
 }
 
 .kiosk-btn--ghost {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
-  border: 1.5px solid var(--glass-border);
+  background: #f1f5f9;
+  color: var(--text-primary);
+  border: 1.5px solid rgba(15, 23, 42, 0.14);
 }
 
 .kiosk-btn--ghost:active:not(:disabled) {
   transform: scale(0.96);
-  background: rgba(255, 255, 255, 0.16);
+  background: #e2e8f0;
 }
 
 .kiosk-btn:focus-visible {

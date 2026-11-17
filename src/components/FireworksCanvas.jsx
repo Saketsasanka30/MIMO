@@ -2,12 +2,12 @@ import { useEffect, useRef } from 'react';
 import './FireworksCanvas.css';
 
 const PALETTE = [
-  '#fff6d6', // champagne white
-  '#ffd166', // warm gold
-  '#f59e0b', // rich amber
-  '#fde68a', // soft gold
-  '#93c5fd', // icy sky blue
-  '#e0f2fe'  // frost silver
+  '#d97706', // amber gold
+  '#f59e0b', // warm gold
+  '#b45309', // deep bronze gold
+  '#2563eb', // crisp cobalt
+  '#e11d48', // festive crimson
+  '#059669'  // emerald pine
 ];
 
 function rand(min, max) {
@@ -15,9 +15,8 @@ function rand(min, max) {
 }
 
 /**
- * Subtle high-DPI canvas fireworks overlay with CSS fade & blend composition.
- * Triggers immediately on mount (HOME and SUMMARY screens) using destination-out
- * clearing so trails never darken or muddy the background artwork.
+ * Subtle high-DPI canvas fireworks overlay with CSS fade composition.
+ * Uses destination-out clearing so trails never muddy the light background.
  */
 export default function FireworksCanvas({ variant = 'ambient' }) {
   const canvasRef = useRef(null);
@@ -67,7 +66,7 @@ export default function FireworksCanvas({ variant = 'ambient' }) {
           vy: Math.sin(angle) * speed,
           alpha: rand(0.6, 0.88),
           decay: rand(0.014, 0.024),
-          radius: rand(1.2, 2.4),
+          radius: rand(1.4, 2.6),
           color: i % 3 === 0 ? secondaryColor : baseColor,
           twinkle: Math.random() > 0.6
         });
@@ -125,7 +124,7 @@ export default function FireworksCanvas({ variant = 'ambient' }) {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.16)';
       ctx.fillRect(0, 0, width, height);
 
-      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalCompositeOperation = 'source-over';
 
       for (let i = rockets.length - 1; i >= 0; i -= 1) {
         const r = rockets[i];

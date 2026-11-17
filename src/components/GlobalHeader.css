@@ -27,12 +27,12 @@
   min-height: 96px;
   flex-shrink: 0;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ffe082 0%, #f59e0b 100%);
-  border: 3px solid #fffbeb;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border: 2.5px solid #ffffff;
   box-shadow:
-    0 14px 34px rgba(245, 158, 11, 0.48),
+    0 10px 26px rgba(217, 119, 6, 0.28),
     inset 0 1px 0 rgba(255, 255, 255, 0.75);
-  color: #16120c;
+  color: #18130a;
   display: grid;
   place-items: center;
   transition: transform 120ms ease, filter 150ms ease;
@@ -50,7 +50,7 @@
 
 .global-back-btn:active:not(:disabled) {
   transform: scale(0.93);
-  filter: brightness(1.08);
+  filter: brightness(0.96);
 }
 
 .global-back-btn:disabled {
@@ -66,26 +66,6 @@
   flex-shrink: 0;
 }
 
-.mimo-brand__emblem {
-  display: grid;
-  place-items: center;
-  padding: 10px;
-  border-radius: 22px;
-  background: rgba(255, 255, 255, 0.13);
-  border: 1.5px solid rgba(255, 209, 102, 0.48);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
-}
-
-.kiosk-stage[data-orientation='landscape'] .mimo-brand__emblem {
-  padding: 8px;
-  border-radius: 18px;
-}
-
-.kiosk-stage[data-orientation='landscape'] .mimo-brand__emblem svg {
-  width: 56px;
-  height: 56px;
-}
-
 .mimo-brand__text {
   display: flex;
   flex-direction: column;
@@ -99,7 +79,7 @@
   font-weight: 800;
   letter-spacing: 0.03em;
   color: var(--text-primary);
-  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.48);
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
 }
 
 .kiosk-stage[data-orientation='landscape'] .mimo-brand__wordmark {
@@ -111,8 +91,7 @@
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: var(--accent-silver);
-  opacity: 0.94;
+  color: var(--text-secondary);
   margin-top: 6px;
 }
 

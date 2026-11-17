@@ -43,7 +43,7 @@
 }
 
 .printing-greeting__name {
-  color: var(--accent-gold);
+  color: var(--accent-gold-strong);
 }
 
 .printing-subline {
@@ -58,7 +58,7 @@
   font-family: var(--font-display);
   font-size: 38px;
   font-weight: 700;
-  color: var(--accent-gold);
+  color: var(--accent-gold-strong);
 }
 
 .kiosk-stage[data-orientation='landscape'] .printing-stage-text {
@@ -130,7 +130,7 @@
   font-size: 40px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
-  color: var(--accent-silver);
+  color: var(--text-primary);
 }
 
 .kiosk-stage[data-orientation='landscape'] .printing-page-meta {
@@ -149,6 +149,6 @@
   margin: 0;
   font-size: var(--type-label);
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   text-align: center;
 }

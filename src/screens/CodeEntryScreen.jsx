@@ -195,11 +195,11 @@ export default function CodeEntryScreen({
               status={status}
               onChange={handleSlotsChange}
               onComplete={runVerify}
-              accentColor="#ffd166"
-              inkColor="#fffbeb"
-              slotColor="#1a2236"
-              digitColor="#141218"
-              dangerColor="#ff3b30"
+              accentColor="#fbbf24"
+              inkColor="#0f172a"
+              slotColor="#f1f5f9"
+              digitColor="#0f172a"
+              dangerColor="#ef4444"
               slotSize={isLandscape ? 104 : 156}
               gap={isLandscape ? 16 : 26}
               radius={isLandscape ? 20 : 28}

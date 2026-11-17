@@ -211,12 +211,12 @@ export default function App() {
 
   return (
     <>
-      {/* Front page background: Happy New Year navy & golden bokeh + subtle fireworks */}
+      {/* Front page background: Light ivory Happy New Year filigree & golden bokeh */}
       <img
-        src="/assets/aistudio/01-image_25e0936d.png"
+        src="/assets/aistudio/image_651bb878.png"
         alt=""
         aria-hidden="true"
-        className={`kiosk-bg-base${isHome ? ' is-active' : ''}`}
+        className={`kiosk-bg-base kiosk-bg-base--home${isHome ? ' is-active' : ''}`}
       />
       <img
         src="/assets/aistudio/image_57854bcc.png"
@@ -225,16 +225,16 @@ export default function App() {
         className={`kiosk-bg-image${isHome ? ' is-active' : ''}`}
       />
 
-      {/* Rest of pages background: Golden ornamented Christmas tree */}
+      {/* Rest of pages background: Light ivory framed ornamented Christmas trees */}
       <img
-        src="/assets/aistudio/Gemini_Generated_Image_vcqip6vcqip6vcqi_47b4d61f.png"
+        src="/assets/aistudio/Bg2_d42c6f07.png"
         alt=""
         aria-hidden="true"
         className={`kiosk-bg-base kiosk-bg-base--tree${!isHome ? ' is-active' : ''}`}
       />
 
-      {/* Subtle readability vignette, ambient snowfall & screen-triggered fireworks */}
-      <div className="kiosk-bg-overlay" aria-hidden="true" />
+      {/* Frosted light wash for darker inner-screen artwork & screen-triggered fireworks */}
+      <div className={`kiosk-bg-overlay${!isHome ? ' is-active' : ''}`} aria-hidden="true" />
       <AnimatePresence>
         {showFireworks ? (
           <motion.div

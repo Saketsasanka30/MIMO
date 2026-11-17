@@ -27,12 +27,10 @@
   width: 156px;
   height: 156px;
   border-radius: 999px;
-  background: radial-gradient(circle, rgba(255, 59, 48, 0.28) 0%, rgba(225, 29, 72, 0.14) 100%);
-  border: 2.5px solid rgba(255, 107, 107, 0.72);
-  box-shadow:
-    0 20px 52px rgba(255, 59, 48, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
-  color: #ff6b6b;
+  background: #fef2f2;
+  border: 2.5px solid #fca5a5;
+  box-shadow: 0 14px 32px rgba(220, 38, 38, 0.14);
+  color: #dc2626;
   display: grid;
   place-items: center;
 }
@@ -64,13 +62,13 @@
   align-items: center;
   padding: 10px 24px;
   border-radius: 999px;
-  background: rgba(255, 59, 48, 0.2);
-  border: 1.5px solid rgba(255, 107, 107, 0.55);
+  background: #fef2f2;
+  border: 1.5px solid #fecaca;
   font-family: var(--font-display);
   font-size: var(--type-caption);
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: #fda4af;
+  color: #b91c1c;
 }
 
 .system-error-title {
@@ -93,8 +91,8 @@
   max-width: 840px;
   padding: 28px 34px;
   border-radius: 24px;
-  background: rgba(8, 10, 16, 0.52);
-  border: 1.5px solid rgba(255, 224, 148, 0.22);
+  background: #f8fafc;
+  border: 1.5px solid rgba(15, 23, 42, 0.09);
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -116,7 +114,7 @@
 
 .system-error-detail-row + .system-error-detail-row {
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(15, 23, 42, 0.08);
 }
 
 .kiosk-stage[data-orientation='landscape'] .system-error-detail-row + .system-error-detail-row {
@@ -136,7 +134,7 @@
 }
 
 .system-error-detail-value--danger {
-  color: #ff8a8a;
+  color: #dc2626;
 }
 
 .system-error-actions {
@@ -177,5 +175,5 @@
   margin: 0;
   font-size: var(--type-caption);
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
 }

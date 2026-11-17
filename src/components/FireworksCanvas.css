@@ -1,4 +1,4 @@
-/* Subtle screen-blended CSS presentation for canvas-based fireworks */
+/* Subtle CSS presentation for canvas-based fireworks */
 .fireworks-canvas {
   position: fixed;
   inset: 0;
@@ -6,7 +6,7 @@
   height: 100%;
   z-index: 2;
   pointer-events: none;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
   opacity: 0;
   animation: fireworks-canvas-in 600ms ease-out forwards;
 }

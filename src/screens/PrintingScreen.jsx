@@ -59,8 +59,8 @@ export default function PrintingScreen({
               step={1}
               unit="%"
               label="Printing"
-              accent="#ffd166"
-              ink="#f8fafc"
+              accent="#f59e0b"
+              ink="#0f172a"
               size={isLandscape ? 420 : 540}
               sweep={320}
               thickness={9}

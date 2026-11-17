@@ -64,21 +64,6 @@ export default function GlobalHeader({
           layout={!reduceMotion}
           transition={SPRING_LAYOUT}
         >
-          <div className="mimo-brand__emblem" aria-hidden="true">
-            <svg viewBox="0 0 48 48" width="84" height="84" fill="none">
-              <rect x="12" y="6" width="24" height="10" rx="3" fill="#e2e8f0" />
-              <rect x="6" y="14" width="36" height="18" rx="6" fill="#ffffff" />
-              <circle cx="14" cy="22" r="2.5" fill="#10b981" />
-              <circle cx="21" cy="22" r="2.5" fill="#ffd166" />
-              <rect x="13" y="26" width="22" height="15" rx="3" fill="#ffd166" />
-              <path d="M17 31h14M17 36h10" stroke="#18181b" strokeWidth="2.5" strokeLinecap="round" />
-              <path
-                d="M39 7l1.2 3.2L43.5 11l-3.3.8L39 15l-1.2-3.2L34.5 11l3.3-.8z"
-                fill="#ffd166"
-              />
-            </svg>
-          </div>
-
           <div className="mimo-brand__text">
             <span className="mimo-brand__wordmark">MIMO</span>
             <span className="mimo-brand__sub">SELF-SERVICE PRINTING KIOSK</span>
