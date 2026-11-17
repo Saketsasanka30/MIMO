@@ -12,11 +12,11 @@
 }
 
 .fireworks-canvas--ambient {
-  --fw-opacity: 0.72;
+  --fw-opacity: 0.42;
 }
 
 .fireworks-canvas--celebrate {
-  --fw-opacity: 0.88;
+  --fw-opacity: 0.56;
 }
 
 @keyframes fireworks-canvas-in {

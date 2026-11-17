@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FestiveCelebrationBurst, MimoHeader } from '../components/FestiveDecorations';
+import { FestiveCelebrationBurst } from '../components/FestiveDecorations';
 import './SummaryScreen.css';
 
 const AUTO_RESET_SECONDS = 10;
@@ -28,10 +28,8 @@ export default function SummaryScreen({ userName = 'Demo', onDone }) {
 
   return (
     <section className="kiosk-screen-host summary-screen" aria-label="Documents Ready">
-      <FestiveCelebrationBurst />
-      <MimoHeader compact />
-
       <div className="glass-card summary-card">
+        <FestiveCelebrationBurst />
         <h1 className="kiosk-heading summary-title">
           <span className="summary-user">{String(userName).toUpperCase()}</span>, your documents are ready.
         </h1>

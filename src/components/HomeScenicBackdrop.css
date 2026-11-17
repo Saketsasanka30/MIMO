@@ -1,0 +1,125 @@
+.home-scenic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: #020b18;
+}
+
+.home-scenic-bg__sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(16, 42, 82, 0.42) 0%, rgba(6, 20, 38, 0.85) 58%, #020b18 100%),
+    linear-gradient(180deg, #020b18 0%, #061426 55%, #0a192c 100%);
+}
+
+.home-scenic-bg__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home-scenic-bg__clouds {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 24%;
+  height: 22%;
+  background:
+    radial-gradient(ellipse 35% 60% at 22% 75%, rgba(10, 25, 44, 0.72) 0%, transparent 100%),
+    radial-gradient(ellipse 40% 65% at 75% 70%, rgba(10, 25, 44, 0.72) 0%, transparent 100%);
+  filter: blur(18px);
+}
+
+.home-scenic-bg__horizon {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 44%;
+  min-height: 260px;
+}
+
+.home-scenic-bg__reflections {
+  animation: home-water-shimmer 4.5s ease-in-out infinite;
+}
+
+@keyframes home-water-shimmer {
+  0%,
+  100% {
+    opacity: 0.78;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+}
+
+/* Right-side Illuminated Christmas Tree + 2027 (~85% width, ~67% height) */
+.home-scenic-bg__tree-anchor {
+  position: absolute;
+  left: 85%;
+  top: 67%;
+  transform: translate(-50%, -50%);
+  width: clamp(220px, 23vw, 410px);
+  aspect-ratio: 420 / 440;
+  z-index: 1;
+}
+
+.home-scenic-bg__tree-glow {
+  position: absolute;
+  inset: -12%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 194, 71, 0.28) 0%, rgba(255, 159, 36, 0.08) 55%, transparent 75%);
+  animation: home-tree-pulse 4s ease-in-out infinite;
+}
+
+.home-scenic-bg__tree-svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 12px 32px rgba(0, 0, 0, 0.65));
+}
+
+@keyframes home-tree-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+/* Responsive Positioning on Tablet & Mobile so Tree Never Overlaps Central Hero */
+@media (max-width: 1024px) {
+  .home-scenic-bg__tree-anchor {
+    left: 86%;
+    top: 74%;
+    width: clamp(180px, 26vw, 290px);
+    opacity: 0.92;
+  }
+}
+
+@media (max-width: 720px) {
+  .home-scenic-bg__tree-anchor {
+    left: 84%;
+    top: 80%;
+    width: 155px;
+    opacity: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-scenic-bg__reflections,
+  .home-scenic-bg__tree-glow {
+    animation: none;
+  }
+}

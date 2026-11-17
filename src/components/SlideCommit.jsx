@@ -256,7 +256,7 @@ export default function SlideCommit({
       trackRef.current?.releasePointerCapture(e.pointerId);
     } catch {}
     setHeld(false);
-    if (x.get() >= TRAVEL) commit(false);
+    if (x.get() >= TRAVEL * 0.86) commit(false);
     else if (g.moved) goHome(velocityOf(g.hist));
   };
   live.current = { move, up };

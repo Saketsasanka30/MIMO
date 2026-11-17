@@ -1,5 +1,4 @@
 import CometDial from '../components/CometDial';
-import { MimoHeader } from '../components/FestiveDecorations';
 import './PrintingScreen.css';
 
 /**
@@ -21,17 +20,16 @@ export default function PrintingScreen({
   userName = 'Demo',
   progress,
   pagesPrinted,
-  totalPages
+  totalPages,
+  isLandscape = false
 }) {
   const statusLabel = getStatusLabel(progress);
   const clampedProgress = Math.min(100, Math.max(0, Math.round(progress)));
 
   return (
     <section className="kiosk-screen-host printing-screen" aria-label="Printing in Progress">
-      <MimoHeader compact />
-
       <div className="printing-stack">
-        {/* Greeting & Live Status Card matching reference */}
+        {/* Greeting & Live Status Card */}
         <div className="glass-card printing-info-card">
           <h1 className="kiosk-heading printing-greeting">
             Hello <span className="printing-greeting__name">{userName}</span>..!
@@ -63,15 +61,15 @@ export default function PrintingScreen({
               label="Printing"
               accent="#ffd166"
               ink="#f8fafc"
-              size={680}
+              size={isLandscape ? 420 : 540}
               sweep={320}
               thickness={9}
               speed={25}
               tapBounce={0.2}
               flickBounce={0.1}
               momentum={1}
-              cometReach={180}
-              cometWidth={22}
+              cometReach={168}
+              cometWidth={20}
             />
             <span className="printing-dial-stage">{statusLabel}</span>
           </div>

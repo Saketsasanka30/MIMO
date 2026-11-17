@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { verify } from '../api/mock';
 import CodeSlots from '../components/CodeSlots';
-import { NewYearBanner } from '../components/FestiveDecorations';
 import './CodeEntryScreen.css';
 
 const CODE_LENGTH = 4;
@@ -13,7 +12,10 @@ export default function CodeEntryScreen({
   status,
   setStatus,
   onAccepted,
-  onCancel
+  onSystemError,
+  onMaintenance,
+  onBusyChange,
+  isLandscape = false
 }) {
   const [verifying, setVerifying] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -34,6 +36,10 @@ export default function CodeEntryScreen({
       clearTimeout(longPressTimerRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    onBusyChange?.(verifying || status === 'success');
+  }, [verifying, status, onBusyChange]);
 
   const clearErrorState = useCallback(() => {
     clearTimeout(errorTimerRef.current);
@@ -59,19 +65,40 @@ export default function CodeEntryScreen({
         setVerifying(false);
 
         if (ok) {
+          if (candidate === '9999' && onMaintenance) {
+            onMaintenance('paper');
+            return;
+          }
           setStatus('success');
           acceptTimerRef.current = setTimeout(() => {
             if (mountedRef.current) onAccepted(candidate);
           }, 650);
         } else {
           setStatus('error');
-          setErrorMsg('Invalid code, please try again');
+          setErrorMsg(
+            candidate === '0000'
+              ? 'Printing failed — opening System Error screen…'
+              : 'Invalid code, please try again'
+          );
           errorTimerRef.current = setTimeout(() => {
             if (!mountedRef.current) return;
+            if (candidate === '0000' && onSystemError) {
+              setStatus('idle');
+              setCode('');
+              setErrorMsg('');
+              onSystemError({
+                code: candidate,
+                errorCode: 'ERR-0000',
+                title: 'Printing Failed',
+                message:
+                  'Unable to process your print job for code 0000. A system error occurred before any pages were printed.'
+              });
+              return;
+            }
             setStatus('idle');
             setCode('');
             setErrorMsg('');
-          }, 1050);
+          }, candidate === '0000' ? 600 : 1050);
         }
       } catch {
         if (!mountedRef.current) return;
@@ -87,7 +114,7 @@ export default function CodeEntryScreen({
         }, 1050);
       }
     },
-    [onAccepted, setCode, setStatus]
+    [onAccepted, onMaintenance, onSystemError, setCode, setStatus]
   );
 
   const handleDigitTap = digit => {
@@ -152,75 +179,47 @@ export default function CodeEntryScreen({
 
   return (
     <section className="kiosk-screen-host code-entry-screen" aria-label="Enter Mimo Code">
-      {/* Top Bar matching reference top-left circular back arrow + New Year badge */}
-      <header className="code-top-bar">
-        <button
-          type="button"
-          className="code-back-btn"
-          aria-label="Back to welcome screen"
-          onClick={onCancel}
-          disabled={verifying || status === 'success'}
-        >
-          <svg
-            viewBox="0 0 24 24"
-            width="42"
-            height="42"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M19 12H5" />
-            <path d="M12 19l-7-7 7-7" />
-          </svg>
-        </button>
-
-        <NewYearBanner compact className="code-ny-banner" />
-      </header>
-
       <div className="glass-card code-entry-card">
-        <div className="code-entry-heading-group">
-          <h1 className="kiosk-heading code-entry-title">Enter Your Mimo Code Here</h1>
-        </div>
+        <div className="code-entry-left">
+          <div className="code-entry-heading-group">
+            <h1 className="kiosk-heading code-entry-title">Enter Your Mimo Code Here</h1>
+          </div>
 
-        <div
-          className={`code-slots-wrap${status === 'error' ? ' is-error-shake' : ''}`}
-          data-status={status}
-        >
-          <CodeSlots
-            length={CODE_LENGTH}
-            value={code}
-            status={status}
-            onChange={handleSlotsChange}
-            onComplete={runVerify}
-            accentColor="#ffd166"
-            inkColor="#fffbeb"
-            slotColor="#1a2236"
-            digitColor="#141218"
-            dangerColor="#ff3b30"
-            slotSize={156}
-            gap={28}
-            radius={28}
-            bounce={0.2}
-            settle={0.3}
-            rise={14}
-            cascade={20}
-            ariaLabel="4-digit Mimo release code"
-          />
-        </div>
+          <div
+            className={`code-slots-wrap${status === 'error' ? ' is-error-shake' : ''}`}
+            data-status={status}
+          >
+            <CodeSlots
+              length={CODE_LENGTH}
+              value={code}
+              status={status}
+              onChange={handleSlotsChange}
+              onComplete={runVerify}
+              accentColor="#ffd166"
+              inkColor="#fffbeb"
+              slotColor="#1a2236"
+              digitColor="#141218"
+              dangerColor="#ff3b30"
+              slotSize={isLandscape ? 104 : 156}
+              gap={isLandscape ? 16 : 26}
+              radius={isLandscape ? 20 : 28}
+              bounce={0.2}
+              settle={0.3}
+              rise={14}
+              cascade={20}
+              ariaLabel="4-digit Mimo release code"
+            />
+          </div>
 
-        <div className="code-entry-feedback" aria-live="polite">
-          {verifying ? (
-            <span className="code-feedback-verifying">Verifying code…</span>
-          ) : errorMsg ? (
-            <span className="code-feedback-error" role="alert">
-              ⚠ {errorMsg}
-            </span>
-          ) : (
-            <span className="code-feedback-hint">Tap digits below · Hold ⌫ to clear</span>
-          )}
+          <div className="code-entry-feedback" aria-live="polite">
+            {verifying ? (
+              <span className="code-feedback-verifying">Verifying code…</span>
+            ) : errorMsg ? (
+              <span className="code-feedback-error" role="alert">
+                ⚠ {errorMsg}
+              </span>
+            ) : null}
+          </div>
         </div>
 
         {/* Custom 3x4 Touch Keypad matching reference (digits, red backspace, checkmark confirm) */}

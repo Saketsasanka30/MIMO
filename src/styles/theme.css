@@ -50,6 +50,19 @@
   --radius-inner: 24px;
   --radius-key: 22px;
 
+  /* Typographic Scale for 1080x1920 Kiosk Stage */
+  --type-display: 78px;
+  --type-h1: 62px;
+  --type-h2: 40px;
+  --type-body: 34px;
+  --type-label: 30px;
+  --type-caption: 25px;
+  --type-keypad: 64px;
+  --type-numeric-lg: 118px;
+
+  /* Unified Content Column Width centered inside 1080px stage */
+  --kiosk-col-width: 100%;
+
   /* Touch Target Minimum (Kiosk Accessibility >= 96x96px) */
   --touch-min: 96px;
 
@@ -105,24 +118,66 @@ button {
   min-height: var(--touch-min);
 }
 
-/* Fullscreen Uploaded New Year Fireworks Background Image */
-.kiosk-bg-image {
+/* Fullscreen Crossfading Backgrounds (Happy New Year on Home, Christmas Tree elsewhere) */
+.kiosk-bg-base {
   position: fixed;
   inset: 0;
   z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: right center;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.035);
+  will-change: opacity, transform;
+  transition:
+    opacity 680ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kiosk-bg-base.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.kiosk-bg-base--tree {
+  object-position: 82% center;
+}
+
+/* Subtle Fireworks Background Layer on Home */
+.kiosk-bg-image {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   object-position: center;
+  opacity: 0;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  will-change: opacity;
+  transition: opacity 680ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.kiosk-bg-image.is-active {
+  opacity: 0.22;
+}
+
+.kiosk-fw-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
   pointer-events: none;
 }
 
-/* Subtle Readability Vignette keeping Fireworks Vibrant */
+/* Balanced Vignette for Card Readability */
 .kiosk-bg-overlay {
   position: fixed;
   inset: 0;
   z-index: 1;
-  background: radial-gradient(circle at 50% 45%, rgba(8, 7, 5, 0.08) 0%, var(--bg-overlay) 100%);
+  background: radial-gradient(circle at 50% 50%, rgba(4, 8, 16, 0.14) 0%, rgba(4, 8, 16, 0.04) 100%);
   pointer-events: none;
 }
 
@@ -137,11 +192,9 @@ button {
   overflow: hidden;
 }
 
-/* Fixed 1080x1920 Stage Scaled via CSS Transform */
+/* Fluid 15-inch Tablet / Kiosk Stage Scaled via CSS Transform */
 .kiosk-stage {
   position: relative;
-  width: 1080px;
-  height: 1920px;
   flex-shrink: 0;
   transform-origin: center center;
   overflow: visible;
@@ -149,29 +202,56 @@ button {
   flex-direction: column;
 }
 
-/* Screen Transition Wrapper */
+.kiosk-stage[data-orientation='landscape'] {
+  --type-display: 56px;
+  --type-h1: 46px;
+  --type-h2: 30px;
+  --type-body: 26px;
+  --type-label: 24px;
+  --type-caption: 20px;
+  --type-keypad: 46px;
+  --type-numeric-lg: 92px;
+  --kiosk-col-width: min(100%, 1180px);
+}
+
+/* Overlapping Screen Transition Viewport */
+.kiosk-screen-viewport {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+}
+
+.kiosk-screen-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  will-change: transform, opacity, filter;
+}
+
+/* Screen Host Container centered horizontally & vertically in viewport */
 .kiosk-screen-host {
   position: relative;
   width: 100%;
-  height: 100%;
-  padding: 48px 40px;
+  flex: 1;
+  min-height: 0;
+  padding: 20px 40px 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
-  animation: kiosk-screen-in var(--screen-transition-ms) cubic-bezier(0.16, 1, 0.3, 1) both;
+  gap: 28px;
 }
 
-@keyframes kiosk-screen-in {
-  from {
-    opacity: 0;
-    transform: translateY(24px) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.kiosk-stage[data-orientation='landscape'] .kiosk-screen-host {
+  padding: 16px 48px 28px;
+  gap: 18px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .kiosk-btn {
+  padding: 22px 44px;
+  font-size: 30px;
 }
 
 /* Standard Glassmorphism Card with Subtle Golden Rim */

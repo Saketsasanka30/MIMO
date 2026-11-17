@@ -31,8 +31,7 @@ export async function verify(code) {
  */
 export function getPrintJob(code) {
   const digits = String(code ?? '1234').replace(/\D/g, '');
-  const seed = digits.split('').reduce((acc, ch) => acc + Number(ch), 0);
-  const totalPages = 8 + (seed % 9);
+  const totalPages = 3;
 
   const userMap = {
     '1234': 'Demo',

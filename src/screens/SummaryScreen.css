@@ -1,25 +1,33 @@
 .summary-screen {
-  justify-content: space-between;
-  gap: 28px;
+  justify-content: center;
+  gap: 20px;
 }
 
 .summary-card {
-  width: 100%;
+  width: min(var(--kiosk-col-width), 1040px);
   flex: 1;
-  padding: 72px 56px;
+  padding: 56px 52px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  gap: 48px;
+  gap: 40px;
+  overflow: hidden;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-card {
+  width: min(100%, 1040px);
+  flex: 0 1 auto;
+  padding: 36px 52px;
+  gap: 22px;
 }
 
 .summary-title {
-  font-size: 72px;
+  font-size: var(--type-h1);
   font-weight: 800;
   color: var(--text-primary);
-  max-width: 860px;
+  max-width: 880px;
 }
 
 .summary-user {
@@ -30,10 +38,15 @@
 .summary-dispenser {
   position: relative;
   width: 520px;
-  height: 430px;
+  height: 410px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-dispenser {
+  width: 400px;
+  height: 292px;
 }
 
 .summary-dispenser__slot {
@@ -48,12 +61,23 @@
   padding: 28px 36px;
 }
 
+.kiosk-stage[data-orientation='landscape'] .summary-dispenser__slot {
+  width: 400px;
+  height: 112px;
+  padding: 20px 28px;
+  border-radius: 14px;
+}
+
 .summary-dispenser__mouth {
   width: 100%;
   height: 92px;
   border-radius: 10px;
   background: linear-gradient(180deg, #070910 0%, #161b29 100%);
   box-shadow: inset 0 10px 24px rgba(0, 0, 0, 0.85);
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-dispenser__mouth {
+  height: 68px;
 }
 
 .summary-dispenser__sheet {
@@ -70,6 +94,13 @@
   align-items: center;
   gap: 22px;
   animation: summary-sheet-slide 780ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-dispenser__sheet {
+  width: 268px;
+  margin-top: -74px;
+  padding: 20px 26px 24px;
+  gap: 14px;
 }
 
 @keyframes summary-sheet-slide {
@@ -95,6 +126,17 @@
   margin-bottom: 6px;
 }
 
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__badge {
+  width: 54px;
+  height: 54px;
+  margin-bottom: 2px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__badge svg {
+  width: 28px;
+  height: 28px;
+}
+
 .summary-sheet__badge svg path {
   stroke: #ffffff;
   stroke-width: 3.2;
@@ -105,6 +147,10 @@
   height: 14px;
   border-radius: 999px;
   background: #cbd5e1;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__line {
+  height: 10px;
 }
 
 .summary-sheet__line--lg {
@@ -127,11 +173,20 @@
   margin-top: 14px;
 }
 
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__footer {
+  margin-top: 6px;
+}
+
 .summary-sheet__stamp {
   width: 64px;
   height: 64px;
   border-radius: 10px;
   border: 2.5px dashed #94a3b8;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__stamp {
+  width: 44px;
+  height: 44px;
 }
 
 .summary-sheet__sig {
@@ -141,24 +196,37 @@
   background: #cbd5e1;
 }
 
+.kiosk-stage[data-orientation='landscape'] .summary-sheet__sig {
+  width: 88px;
+  height: 9px;
+}
+
 /* Collect Instruction Line */
 .summary-collect-instruction {
   margin: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 14px;
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: 27px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   color: var(--accent-silver);
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-collect-instruction {
+  font-size: 24px;
 }
 
 .summary-arrow {
   color: var(--accent-gold);
-  font-size: 34px;
+  font-size: 38px;
   animation: summary-arrow-bob 1.4s ease-in-out infinite;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-arrow {
+  font-size: 30px;
 }
 
 @keyframes summary-arrow-bob {
@@ -174,23 +242,29 @@
 .summary-done-btn {
   width: 460px;
   height: 116px;
-  font-size: 40px;
+  min-height: 96px;
+  font-size: 42px;
   letter-spacing: 0.08em;
   border-radius: 999px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .summary-done-btn {
+  width: 380px;
+  height: 98px;
+  font-size: 34px;
 }
 
 .summary-countdown {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 28px;
+  font-size: var(--type-label);
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--text-muted);
 }
 
 .summary-spacer {
-  height: 24px;
-  flex-shrink: 0;
+  display: none;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,32 +1,45 @@
 .printing-screen {
   justify-content: space-between;
-  gap: 28px;
+  gap: 24px;
 }
 
 .printing-stack {
-  width: 100%;
+  width: var(--kiosk-col-width);
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 36px;
+  gap: 24px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .printing-stack {
+  width: min(100%, 1180px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 28px;
 }
 
 .printing-info-card {
   width: 100%;
-  padding: 68px 72px;
+  padding: 40px 48px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 18px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .printing-info-card {
+  padding: 36px 40px;
 }
 
 .printing-greeting {
-  font-size: 96px;
+  font-size: var(--type-display);
   font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 12px;
+  margin-bottom: 6px;
 }
 
 .printing-greeting__name {
@@ -35,28 +48,37 @@
 
 .printing-subline {
   margin: 0;
-  font-size: 44px;
+  font-size: var(--type-h2);
   font-weight: 500;
   color: var(--text-secondary);
 }
 
 .printing-stage-text {
-  margin: 20px 0 0;
+  margin: 12px 0 0;
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 38px;
   font-weight: 700;
   color: var(--accent-gold);
+}
+
+.kiosk-stage[data-orientation='landscape'] .printing-stage-text {
+  font-size: 30px;
 }
 
 .printing-dial-card {
   width: 100%;
   flex: 1;
-  padding: 64px 56px;
+  padding: 40px 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 18px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .printing-dial-card {
+  padding: 28px 36px;
+  gap: 12px;
 }
 
 /* Read-only CometDial container: disables all pointer/touch/drag interaction */
@@ -72,7 +94,7 @@
 .printing-dial-readonly .comet-dial__value {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 168px;
+  font-size: var(--type-numeric-lg);
 }
 
 .printing-dial-readonly .comet-dial__unit {
@@ -82,13 +104,13 @@
 
 .printing-dial-stage {
   position: absolute;
-  bottom: 136px;
+  bottom: 106px;
   left: 50%;
   transform: translateX(-50%);
-  width: 390px;
+  width: 280px;
   text-align: center;
   font-family: var(--font-sans);
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--text-secondary);
   white-space: nowrap;
@@ -96,26 +118,37 @@
   text-overflow: ellipsis;
 }
 
+.kiosk-stage[data-orientation='landscape'] .printing-dial-stage {
+  bottom: 84px;
+  width: 220px;
+  font-size: 19px;
+}
+
 .printing-page-meta {
   margin: 0;
   font-family: var(--font-display);
-  font-size: 42px;
+  font-size: 40px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--accent-silver);
 }
 
+.kiosk-stage[data-orientation='landscape'] .printing-page-meta {
+  font-size: 32px;
+}
+
 .printing-footer {
-  width: 100%;
+  width: var(--kiosk-col-width);
   display: flex;
   justify-content: center;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
   flex-shrink: 0;
 }
 
 .printing-notice {
   margin: 0;
-  font-size: 30px;
+  font-size: var(--type-label);
   font-weight: 500;
   color: var(--text-muted);
+  text-align: center;
 }

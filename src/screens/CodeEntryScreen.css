@@ -1,58 +1,40 @@
 .code-entry-screen {
-  justify-content: space-between;
-  gap: 28px;
-}
-
-.code-top-bar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-  flex-shrink: 0;
-}
-
-.code-back-btn {
-  width: 104px;
-  height: 104px;
-  min-width: 96px;
-  min-height: 96px;
-  flex-shrink: 0;
-  border-radius: 999px;
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1.5px solid var(--glass-border);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
-  color: var(--text-primary);
-  display: grid;
-  place-items: center;
-  transition: transform 120ms ease, background-color 150ms ease;
-}
-
-.code-back-btn:active:not(:disabled) {
-  transform: scale(0.93);
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.code-back-btn:disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
-.code-ny-banner {
-  max-width: none;
+  justify-content: center;
 }
 
 .code-entry-card {
-  width: 100%;
+  width: var(--kiosk-col-width);
   flex: 1;
-  padding: 64px 48px;
+  padding: 44px 48px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 44px;
+  justify-content: flex-start;
+  gap: 28px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .code-entry-card {
+  width: min(100%, 620px);
+  flex: 0 1 auto;
+  margin: auto 0;
+  padding: 24px 44px 28px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 14px;
+}
+
+.code-entry-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .code-entry-left {
+  gap: 12px;
 }
 
 .code-entry-heading-group {
@@ -63,8 +45,12 @@
 }
 
 .code-entry-title {
-  font-size: 72px;
+  font-size: var(--type-h1);
   color: var(--text-primary);
+}
+
+.kiosk-stage[data-orientation='landscape'] .code-entry-title {
+  font-size: 38px;
 }
 
 /* CodeSlots Wrapper + Shake Error Animation */
@@ -72,7 +58,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 8px 0;
+  padding: 6px 0;
+}
+
+.kiosk-stage[data-orientation='landscape'] .code-slots-wrap {
+  padding: 2px 0;
 }
 
 .code-slots-wrap .code-slots__digit {
@@ -108,19 +98,18 @@
 
 /* Feedback Line */
 .code-entry-feedback {
-  min-height: 48px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-size: 32px;
+  font-size: var(--type-body);
   font-weight: 600;
 }
 
-.code-feedback-hint {
-  color: var(--text-muted);
-  font-size: 28px;
-  font-weight: 500;
+.kiosk-stage[data-orientation='landscape'] .code-entry-feedback {
+  min-height: 28px;
+  font-size: 22px;
 }
 
 .code-feedback-verifying {
@@ -129,21 +118,32 @@
   font-size: 36px;
 }
 
+.kiosk-stage[data-orientation='landscape'] .code-feedback-verifying {
+  font-size: 24px;
+}
+
 .code-feedback-error {
   color: #ff6b6b;
   font-weight: 700;
 }
 
-/* Custom 3x4 Keypad: Exactly 708px wide matching 4*156 + 3*28 CodeSlots row */
+/* Custom 3x4 Keypad stacked below the 4 code spaces */
 .code-keypad {
-  width: 708px;
+  width: 718px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
+  flex-shrink: 0;
+}
+
+.kiosk-stage[data-orientation='landscape'] .code-keypad {
+  width: 440px;
+  gap: 12px 18px;
+  margin-top: 4px;
 }
 
 .keypad-key {
-  height: 156px;
+  height: 150px;
   min-width: 96px;
   min-height: 96px;
   border-radius: 999px;
@@ -155,7 +155,7 @@
     0 12px 28px rgba(0, 0, 0, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
   font-family: var(--font-display);
-  font-size: 60px;
+  font-size: var(--type-keypad);
   font-weight: 700;
   color: var(--text-primary);
   display: grid;
@@ -165,6 +165,16 @@
     background-color 140ms ease,
     border-color 140ms ease,
     opacity 160ms ease;
+}
+
+.kiosk-stage[data-orientation='landscape'] .keypad-key {
+  height: 96px;
+  font-size: 40px;
+}
+
+.kiosk-stage[data-orientation='landscape'] .keypad-key svg {
+  width: 34px;
+  height: 34px;
 }
 
 .keypad-key:active:not(:disabled) {

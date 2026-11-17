@@ -6,7 +6,7 @@ const PALETTE = [
   '#ffd166', // warm gold
   '#f59e0b', // rich amber
   '#fde68a', // soft gold
-  '#fda4af', // rose shimmer
+  '#93c5fd', // icy sky blue
   '#e0f2fe'  // frost silver
 ];
 
@@ -53,31 +53,31 @@ export default function FireworksCanvas({ variant = 'ambient' }) {
     const rockets = [];
     const particles = [];
 
-    const spawnBurst = (cx, cy, count = 34) => {
+    const spawnBurst = (cx, cy, count = 16) => {
       const baseColor = PALETTE[Math.floor(Math.random() * PALETTE.length)];
       const secondaryColor = PALETTE[Math.floor(Math.random() * PALETTE.length)];
 
       for (let i = 0; i < count; i += 1) {
         const angle = (Math.PI * 2 * i) / count + rand(-0.08, 0.08);
-        const speed = rand(1.4, variant === 'celebrate' ? 5.2 : 4.2);
+        const speed = rand(1.2, variant === 'celebrate' ? 4.2 : 3.4);
         particles.push({
           x: cx,
           y: cy,
           vx: Math.cos(angle) * speed,
           vy: Math.sin(angle) * speed,
-          alpha: rand(0.75, 1),
-          decay: rand(0.011, 0.02),
-          radius: rand(1.4, 3.0),
+          alpha: rand(0.6, 0.88),
+          decay: rand(0.014, 0.024),
+          radius: rand(1.2, 2.4),
           color: i % 3 === 0 ? secondaryColor : baseColor,
-          twinkle: Math.random() > 0.55
+          twinkle: Math.random() > 0.6
         });
       }
     };
 
     const launchRocket = (targetX, targetY) => {
-      const startX = targetX + rand(-40, 40);
+      const startX = targetX + rand(-36, 36);
       const startY = height + 10;
-      const travelFrames = rand(28, 42);
+      const travelFrames = rand(30, 44);
       rockets.push({
         x: startX,
         y: startY,
@@ -85,38 +85,35 @@ export default function FireworksCanvas({ variant = 'ambient' }) {
         vy: (targetY - startY) / travelFrames,
         framesLeft: travelFrames,
         color: PALETTE[Math.floor(Math.random() * PALETTE.length)],
-        burstCount: variant === 'celebrate' ? 42 : 30
+        burstCount: variant === 'celebrate' ? 22 : 14
       });
     };
 
-    // Keep bursts predominantly in upper and outer sky framing around UI cards
+    // Keep sparse bursts in outer upper sky away from centered UI cards
     const pickSkySpot = () => {
-      const sideBias = Math.random();
       const x =
-        sideBias < 0.35
-          ? rand(width * 0.08, width * 0.28)
-          : sideBias < 0.7
-            ? rand(width * 0.72, width * 0.92)
-            : rand(width * 0.28, width * 0.72);
-      const y = rand(height * 0.1, height * 0.42);
+        Math.random() < 0.5
+          ? rand(width * 0.06, width * 0.24)
+          : rand(width * 0.76, width * 0.94);
+      const y = rand(height * 0.1, height * 0.36);
       return { x, y };
     };
 
-    // Immediate opening bursts on screen entry
+    // Gentle opening burst on screen entry
     const timers = [];
-    const openingCount = variant === 'celebrate' ? 3 : 2;
+    const openingCount = variant === 'celebrate' ? 2 : 1;
     for (let i = 0; i < openingCount; i += 1) {
       const t = setTimeout(() => {
         const spot = pickSkySpot();
-        spawnBurst(spot.x, spot.y, variant === 'celebrate' ? 42 : 32);
-      }, i * 320);
+        spawnBurst(spot.x, spot.y, variant === 'celebrate' ? 22 : 14);
+      }, i * 450);
       timers.push(t);
     }
 
-    // Gentle ongoing New Year fireworks cadence
-    const intervalMs = variant === 'celebrate' ? 1450 : 2100;
+    // Slower, calmer ongoing fireworks cadence
+    const intervalMs = variant === 'celebrate' ? 2800 : 4200;
     const launcher = setInterval(() => {
-      if (particles.length > 260) return;
+      if (particles.length > 90) return;
       const spot = pickSkySpot();
       launchRocket(spot.x, spot.y);
     }, intervalMs);
