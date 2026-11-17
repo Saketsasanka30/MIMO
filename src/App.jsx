@@ -211,21 +211,15 @@ export default function App() {
 
   return (
     <>
-      {/* Front page background: Light ivory Happy New Year filigree & golden bokeh */}
+      {/* Front page background: bg1 (Happy New Year filigree & bokeh) */}
       <img
-        src="/assets/aistudio/image_651bb878.png"
+        src="/assets/aistudio/bg1_341ba45a.png"
         alt=""
         aria-hidden="true"
         className={`kiosk-bg-base kiosk-bg-base--home${isHome ? ' is-active' : ''}`}
       />
-      <img
-        src="/assets/aistudio/image_57854bcc.png"
-        alt=""
-        aria-hidden="true"
-        className={`kiosk-bg-image${isHome ? ' is-active' : ''}`}
-      />
 
-      {/* Rest of pages background: Light ivory framed ornamented Christmas trees */}
+      {/* Rest of pages background: bg2 (Ornamented Christmas trees) */}
       <img
         src="/assets/aistudio/Bg2_d42c6f07.png"
         alt=""
