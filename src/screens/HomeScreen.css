@@ -1,15 +1,15 @@
 .home-screen {
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
-/* Hero Card positioned on the left side to leave Happy New Year completely visible */
-.home-hero-card {
-  width: min(var(--kiosk-col-width), 840px);
+/* Translucent Frosted Glass Card so Happy New Year text is completely visible through it */
+.glass-card.home-hero-card {
+  width: min(var(--kiosk-col-width), 900px);
   max-width: 100%;
   flex: 1;
   max-height: 1420px;
-  margin: auto 0 auto 32px;
+  margin: auto 0;
   padding: 64px 48px;
   display: flex;
   flex-direction: column;
@@ -17,14 +17,20 @@
   justify-content: center;
   text-align: center;
   gap: 24px;
-  border-color: rgba(217, 119, 6, 0.22);
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1.5px solid rgba(217, 119, 6, 0.35);
+  box-shadow:
+    0 16px 40px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
-.kiosk-stage[data-orientation='landscape'] .home-hero-card {
-  width: min(100%, 680px);
+.kiosk-stage[data-orientation='landscape'] .glass-card.home-hero-card {
+  width: min(100%, 740px);
   flex: 0 1 auto;
-  margin: auto 0 auto 56px;
-  padding: 36px 44px;
+  margin: auto 0;
+  padding: 36px 48px;
   gap: 14px;
 }
 
@@ -127,20 +133,28 @@
   margin: 0 0 14px;
 }
 
-/* Enlarged Kiosk SlideCommit Wrapper */
+/* Seamlessly Aligned Kiosk SlideCommit Wrapper */
 .home-slide-wrap {
-  padding: 14px;
-  border-radius: 94px;
-  background: rgba(255, 255, 255, 0.14);
-  border: 2px solid rgba(217, 119, 6, 0.34);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
   box-shadow: none;
   margin: 0 auto;
   max-width: 100%;
 }
 
 .kiosk-stage[data-orientation='landscape'] .home-slide-wrap {
-  padding: 10px;
-  border-radius: 76px;
+  padding: 0;
+  border: none;
+}
+
+.home-slide-wrap .slide-commit__track {
+  border: 2px solid rgba(217, 119, 6, 0.42);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  box-sizing: border-box;
 }
 
 .home-slide-wrap .slide-commit__label,
