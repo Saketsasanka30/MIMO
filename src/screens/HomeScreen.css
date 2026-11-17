@@ -1,14 +1,15 @@
 .home-screen {
   justify-content: center;
+  align-items: flex-start;
 }
 
-/* Centered Hero Card in Crisp Frosted Light Mode */
+/* Hero Card positioned on the left side to leave Happy New Year completely visible */
 .home-hero-card {
-  width: min(var(--kiosk-col-width), 920px);
+  width: min(var(--kiosk-col-width), 840px);
   max-width: 100%;
   flex: 1;
   max-height: 1420px;
-  margin: auto 0;
+  margin: auto 0 auto 32px;
   padding: 64px 48px;
   display: flex;
   flex-direction: column;
@@ -16,17 +17,14 @@
   justify-content: center;
   text-align: center;
   gap: 24px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
   border-color: rgba(217, 119, 6, 0.22);
-  box-shadow: none;
 }
 
 .kiosk-stage[data-orientation='landscape'] .home-hero-card {
-  width: min(100%, 760px);
+  width: min(100%, 680px);
   flex: 0 1 auto;
-  padding: 36px 48px;
+  margin: auto 0 auto 56px;
+  padding: 36px 44px;
   gap: 14px;
 }
 

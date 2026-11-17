@@ -146,7 +146,7 @@ button {
 }
 
 .kiosk-bg-base--home {
-  object-position: center center;
+  object-position: right center;
 }
 
 .kiosk-bg-base--home.is-active {
