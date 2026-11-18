@@ -211,9 +211,9 @@ export default function App() {
 
   return (
     <>
-      {/* Front page background: bg1 (Happy New Year filigree & bokeh) */}
+      {/* Front page background: Bg1 */}
       <img
-        src="/assets/aistudio/bg1_341ba45a.png"
+        src="/assets/aistudio/Bg1_330e24eb.png"
         alt=""
         aria-hidden="true"
         className={`kiosk-bg-base kiosk-bg-base--home${isHome ? ' is-active' : ''}`}

@@ -1,16 +1,8 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import './GlobalHeader.css';
 
-const SPRING_LAYOUT = {
-  type: 'spring',
-  stiffness: 260,
-  damping: 28,
-  mass: 0.9
-};
-
 /**
- * Globally fixed Kiosk Header displaying top-left MIMO branding consistently
- * across every screen, plus the extreme top-left Back button on CODE_ENTRY.
+ * Globally fixed Kiosk Header displaying the extreme top-left Back button on CODE_ENTRY.
  */
 export default function GlobalHeader({
   showBack = false,
@@ -20,7 +12,7 @@ export default function GlobalHeader({
   const reduceMotion = useReducedMotion();
 
   return (
-    <header className="global-header" aria-label="MIMO Kiosk Header">
+    <header className="global-header" aria-label="Kiosk Header">
       <div className="global-header__row">
         <AnimatePresence initial={false} mode="popLayout">
           {showBack ? (
@@ -57,18 +49,6 @@ export default function GlobalHeader({
             </motion.button>
           ) : null}
         </AnimatePresence>
-
-        {/* Prominent MIMO Top-Left Brand Lockup smoothly gliding with back button */}
-        <motion.div
-          className="mimo-brand"
-          layout={!reduceMotion}
-          transition={SPRING_LAYOUT}
-        >
-          <div className="mimo-brand__text">
-            <span className="mimo-brand__wordmark">MIMO</span>
-            <span className="mimo-brand__sub">SELF-SERVICE PRINTING KIOSK</span>
-          </div>
-        </motion.div>
       </div>
     </header>
   );
